@@ -1,0 +1,74 @@
+// font weight
+$font-weight-normal: 400;
+$font-weight-bold: 500;
+$font-weight-bolder: 600;
+
+// font size
+$h1-font-size: 48px;
+$h2-font-size: 32px;
+$h3-font-size: 24px;
+$h4-font-size: 20px;
+$h5-font-size: 18px;
+
+$line-height-base: 1.4;
+
+// borders
+$border-radius: 12px;
+$border-radius-sm: 8px;
+$border-radius-lg: 26px;
+
+$modal-content-border-radius: 12px;
+// buttons
+$btn-font-size: 18px;
+$btn-padding-y: 10px;
+$btn-padding-x: 10px;
+$btn-border-radius: 12px;
+$btn-font-weight: $font-weight-bolder;
+
+$btn-font-size-sm: 16px;
+$btn-padding-y-sm: 3px;
+$btn-padding-x-sm: 12px;
+$btn-border-radius-sm: 12px;
+
+// colors
+$body-bg: #6a6e77;
+$body-color: #2b2e35;
+$primary: #3690a0;
+$secondary: #b0b3ba;
+$warning: #bd5521;
+$danger: #7e1616;
+$light: #b0b3ba;
+$dark: #333;
+
+$theme-colors: (
+  "body-color": $body-color,
+  "body-bg": $body-bg,
+  "primary": $primary,
+  "secondary": $secondary,
+  "light": $light,
+  "dark": $dark,
+  "warning": $warning,
+  "danger": $danger,
+);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 575px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1440px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1040px,
+  xxl: 1097px,
+);
+
+$enable-negative-margins: true;
+$grid-gutter-width: 24px !default;
+
+@import "./_utilities";

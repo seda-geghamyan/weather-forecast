@@ -1,0 +1,8 @@
+.modal {
+  background-color: rgba(#000, 0.5);
+  &-dialog {
+    @include media-breakpoint-up(sm) {
+        margin-top: 20%;
+      }
+  }
+}
