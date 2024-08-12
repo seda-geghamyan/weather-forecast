@@ -39,14 +39,15 @@ export const useWeatherStore = defineStore("weather", {
     },
 
     async getSelectedCityWeather(coord) {
+      if (!coord) return
       this.selectedCityWeather = {};
       this.dailyHourlyWeather = {};
       Promise.all([
         fetch(
-          `${fetchUrl}/weather?lat=${coord.latitude}&lon=${coord.longitude}&appid=${apiKey}&units=metric`
+          `${fetchUrl}/data/2.5/weather?lat=${coord.latitude}&lon=${coord.longitude}&appid=${apiKey}&units=metric`
         ),
         fetch(
-          `${fetchUrl}/forecast?lat=${coord.latitude}&lon=${coord.longitude}&appid=${apiKey}&units=metric`
+          `${fetchUrl}/data/2.5/forecast?lat=${coord.latitude}&lon=${coord.longitude}&appid=${apiKey}&units=metric`
         ),
       ])
         .then(async (res) => {
@@ -77,17 +78,20 @@ export const useWeatherStore = defineStore("weather", {
       try {
         const cities = await (
           await fetch(
-            `https://openweathermap.org/data/2.5/find?q=${city}&appid=439d4b804bc8187953eb36d2a8c26a02&units=metric`
+            `${fetchUrl}/geo/1.0/direct?q=${city}&appid=${apiKey}`
           )
         ).json();
 
-        cities.list?.forEach((el) => {
-          this.preferedCitiesList.push(el?.name);
-          this.preferedCitiesLocation[el?.name] = {
-            latitude: el.coord.lat,
-            longitude: el.coord.lon,
-          };
-        });
+        cities?.length &&
+          cities?.forEach((element) => {
+            this.preferedCitiesList.push(element?.name);
+            this.preferedCitiesLocation[element?.name] = {
+              latitude: element.lat,
+              longitude: element.lon,
+            };
+          });
+
+
       } catch (err) {
         console.error(err);
       }
